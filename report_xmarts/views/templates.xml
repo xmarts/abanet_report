@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+        <record id="view_accountinvoice_form_inherit" model="ir.ui.view">
+            <field name="name">view.accountinvoice.form.add.text.field</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_invoice']" position="after">
+                    <field name="invoice_phone"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="inherit_res_partner" model="ir.ui.view">
+            <field name="name">inherit_res_partner</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales_purchases']//field[@name='customer']" position="after">
+                    <field name="rfc_banco_cliente"/>                
+                    <field name="clabe"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="inherit_journal" model="ir.ui.view">
+            <field name="name">inherit_journal</field>
+            <field name="model">account.journal</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.view_account_journal_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='bank_account']//field[@name='bank_id']" position="after">
+                    <field name="rfc_banco_emisor"/>                
+                </xpath>
+            </field>
+        </record>
+ </data>
+</odoo>
+
+
+
